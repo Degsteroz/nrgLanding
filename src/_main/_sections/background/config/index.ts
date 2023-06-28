@@ -2,7 +2,7 @@ import {
   LOGO_IMAGE,
   CASTLE,
   MOUNTAINS,
-} from '@/pages/_config/config';
+} from '@/_config/config';
 
 const headerConfig = {
   header: 'Ролевошная',

@@ -5,7 +5,7 @@ import React, {
 } from 'react';
 import Link from 'next/link';
 
-import { getLinks } from '@/pages/_modules/Navigation/config';
+import { getLinks } from '@/_modules/Navigation/config';
 
 import styles from './styles/styles.module.sass';
 
