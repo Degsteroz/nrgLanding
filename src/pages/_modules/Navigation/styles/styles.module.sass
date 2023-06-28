@@ -1,0 +1,39 @@
+@import "src/styles/colors.module"
+
+.navigationContainer
+  position: fixed
+  top: -66px
+  left: 0
+  padding: 10px 20px
+  width: 100%
+
+  background-color: $colorBlack
+  display: flex
+
+  transition: all 0.3s ease-in-out
+  font-family: 'Yanone Kaffeesatz', sans-serif
+
+  &.--visible
+    top: 0
+
+  &.--semiVisible
+    background-color: rgba($colorBlack, 0.6)
+
+.linkUnderline
+  transition: width .2s ease-in-out
+  width: 0
+  background-color: $colorWhite
+  height: 2px
+  border-radius: 2px
+
+.navigationLink
+  color: $colorWhite
+  font-size: 24px
+  text-decoration: none
+  text-transform: uppercase
+
+  &:hover
+    .linkUnderline
+      width: 100%
+
+

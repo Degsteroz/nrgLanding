@@ -1,8 +1,5 @@
+import React from 'react';
 
 export default function Guild() {
-  return (
-    <main className="guild">
-      Kek
-    </main>
-  )
+  return <div>GUILD</div>;
 }

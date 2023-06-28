@@ -1,0 +1,28 @@
+.navigationContainer
+  position: absolute
+  top: 0
+  height: 100vh
+  width: 100vw
+  display: flex
+  align-items: flex-end
+  justify-content: center
+  overflow: hidden
+
+
+
+.navigationComponentImage
+  margin-bottom: -300px
+  filter: blur(6px)
+  transition: all 1s ease-out
+  animation: appear 4s ease-in-out
+
+  &.--focused
+    margin-bottom: -100px
+    filter: blur(0)
+    width: 600px
+
+@keyframes appear
+  from
+    margin-bottom: -500px
+  to
+    margin-bottom: -300px
