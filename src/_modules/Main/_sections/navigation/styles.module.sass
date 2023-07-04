@@ -1,0 +1,41 @@
+.navigationContainer
+  position: absolute
+  top: 0
+  height: 100vh
+  width: 100vw
+  display: flex
+  align-items: flex-end
+  justify-content: center
+  overflow: hidden
+
+
+
+.navigationComponentImage
+  margin-bottom: -400px
+  filter: blur(6px)
+  transition: all 1s ease-out
+  animation: appear 4s ease-in-out, highlight 1s ease-in-out 2 6s
+
+  &.--focused
+    margin-bottom: -100px
+    filter: blur(0)
+    width: 600px
+
+  &:hover
+    &:not(.--focused)
+      margin-bottom: -350px
+      filter: blur(3px)
+
+@keyframes appear
+  from
+    margin-bottom: -500px
+  to
+    margin-bottom: -400px
+
+@keyframes highlight
+  0%
+    filter: drop-shadow(0 0 1px white) blur(6px)
+  50%
+    filter: drop-shadow(0 0 15px white) blur(6px)
+  100%
+    filter: drop-shadow(0 0 1px white) blur(6px)

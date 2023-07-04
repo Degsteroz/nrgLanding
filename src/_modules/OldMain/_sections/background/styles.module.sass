@@ -1,0 +1,97 @@
+@import "../../../../styles/colors.module"
+
+.backgroundComponent
+  display: flex
+  justify-content: flex-start
+  color: $colorWhite
+  font-family: 'Yanone Kaffeesatz', sans-serif
+  font-size: 160px
+  line-height: 1
+  width: 100vw
+  height: 100vh
+  overflow: hidden
+  transition: all .5s ease-in-out
+
+  &.--unfocused
+    filter: blur(4px)
+
+.contentComponent
+  background: url("https://c4.wallpaperflare.com/wallpaper/53/889/264/pixel-art-stars-moon-clouds-wallpaper-preview.jpg") no-repeat top
+  background-size: 110%
+  display: flex
+  justify-content: center
+  width: 100%
+  height: 150%
+  transition: all 1s ease-in-out
+  position: relative
+  animation: sky 3s linear
+
+  &.--unfocused
+    margin-top: -150px
+
+@keyframes sky
+  from
+    background-size: 150%
+  to
+    background-size: 110%
+
+.castleImage, .mountainImage
+  width: 100%
+  height: 100%
+  position: absolute
+  top: 0
+  left: 0
+  animation: castleAppear 3s ease-out
+
+@keyframes castleAppear
+  0%
+    transform: translate(0, 300px)
+  100%
+    transform: translate(0)
+
+
+.mountainImage
+  animation: mountainAppear 3s ease-out
+
+@keyframes mountainAppear
+  0%
+    transform: translate(0, 400px)
+  100%
+    transform: translate(0, 0px)
+
+.logoImage
+  margin-top: 100px
+  height: 100%
+  filter: drop-shadow(0 0 15px #ff0101)
+  border-radius: 50%
+  -webkit-animation: glow 15s infinite, appear 4s ease-in-out
+
+@keyframes glow
+  0%
+    filter: drop-shadow(0 0 10px white)
+
+  50%
+    filter: drop-shadow(0 0 15px #ff0101)
+
+  100%
+    filter: drop-shadow(0 0 10px white)
+
+@keyframes appear
+  0%
+    margin-top: 800px
+
+  100%
+    margin-top: 100px
+
+@keyframes hide
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+.contentWrapper
+  display: flex
+  justify-content: center
+  height: 300px
+
+

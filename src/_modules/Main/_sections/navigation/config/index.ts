@@ -1,6 +1,6 @@
 import {
   HANDS_WITH_MAP,
-} from '@/_config/config';
+} from '@/config/config';
 const config = {
   backgroundImage: HANDS_WITH_MAP
 };

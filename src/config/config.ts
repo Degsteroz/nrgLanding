@@ -5,18 +5,23 @@ const CONFIG = {
   scale1000: 'c_scale,w_1000/',
   lowQuality: 'q_50/',
   blur: 'e_blur:2000/',
-  pixelate: 'e_pixelate:15/'
+  pixelate: 'e_pixelate:8/'
 };
 const DIRECTORY = 'rolevoshnaya/';
 
 const LOGO_IMAGE = BASE_URL + CONFIG.pixelate + DIRECTORY + 'logokanala';
+const MANSION = BASE_URL + DIRECTORY + 'Main_mansion';
+const FOREST = BASE_URL + DIRECTORY + 'Main_forest';
+const HANDS_WITH_MAP = BASE_URL + DIRECTORY + 'hands';
+
 const CASTLE = BASE_URL + DIRECTORY + 'castleBackground';
 const MOUNTAINS = BASE_URL + DIRECTORY + 'mountainsBackground';
-const HANDS_WITH_MAP = BASE_URL + DIRECTORY + 'hands';
 
 export {
   LOGO_IMAGE,
-  CASTLE,
-  MOUNTAINS,
+  MANSION,
+  FOREST,
   HANDS_WITH_MAP,
+  CASTLE,
+  MOUNTAINS
 };

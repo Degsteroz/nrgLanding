@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styles from './page.module.sass';
 
-import Background from '../_modules/Main/_sections/background';
-import Navigation from '../_modules/Main/_sections/navigation';
+import Background from '../../_modules/OldMain/_sections/background';
+import Navigation from '../../_modules/OldMain/_sections/navigation';
 
 const MAIN = 'MAIN';
 const MAP = 'MAP';
