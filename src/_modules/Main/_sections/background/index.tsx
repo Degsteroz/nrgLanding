@@ -19,29 +19,35 @@ export default function Background({
   return (
     <div className={backgroundComponentClassName}>
       <div className={contentComponentClassName}>
+        <div className={styles.lightningBG} />
+
         <Image
           src={headerConfig.forest}
           alt="mountains layer"
-          className={styles.mountainImage}
-          fill
-        />
-
-        <Image
-          src={headerConfig.mansion}
-          className={styles.castleImage}
-          alt="castle layer"
-          fill
+          className={styles.forestImage}
+          width={1000}
+          height={1000}
         />
 
         <div className={styles.contentWrapper}>
           <Image
             src={headerConfig.logoImageSrc}
             className={styles.logoImage}
-            height={300}
-            width={350}
+            height={1000}
+            width={1200}
             alt="logo image"
           />
         </div>
+
+        <Image
+          src={headerConfig.mansion}
+          className={styles.mansionImage}
+          alt="castle layer"
+          width={1000}
+          height={1000}
+        />
+
+        <div className={styles.rain}/>
       </div>
     </div>
   );
