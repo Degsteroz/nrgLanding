@@ -11,8 +11,8 @@
 .navigationContentWrapper
   margin-bottom: -400px
   display: grid
-  grid-template-columns: 1fr 1fr 1fr
-  grid-template-rows: 90px 1fr 1fr 1fr 1fr
+  grid-template-columns: 90px 1fr 1fr 1fr 90px
+  grid-template-rows: 30px 1fr 1fr 10px
   position: relative
   filter: blur(6px)
   transition: all 1s ease-out
@@ -53,14 +53,12 @@
   grid-row: 1 / -1
 
 .navigationLinkContainer
-  grid-column: 2 / 2
+  grid-column: 2 / -2
   grid-row: 2 / 2
   text-align: center
-  filter: drop-shadow(0 0 5px rgb(37, 60, 201))
   opacity: 0
   transition: all 1s ease-in-out
-  &:hover
-    filter: drop-shadow(0 0 10px rgb(255, 0, 28))
+  display: flex
 
 
 .navigationLinkImage

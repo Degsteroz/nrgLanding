@@ -1,6 +1,8 @@
 import React, { MouseEvent } from 'react';
 import Image from 'next/image';
 
+import NavigationLinks from './components/navigationLinks';
+
 import config from './config';
 import styles from './styles.module.sass';
 
@@ -51,14 +53,7 @@ export default function Navigation({
           className={styles.navigationLinkContainer}
           onClick={changePage}
         >
-          <Image
-            src={config.logoImage}
-            className={styles.navigationLinkImage}
-            height={250}
-            width={250}
-            alt="navigation"
-          />
-          <div>ВОЙТИ</div>
+          <NavigationLinks />
         </div>
       </div>
 

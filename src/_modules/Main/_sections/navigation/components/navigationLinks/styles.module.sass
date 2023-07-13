@@ -1,0 +1,39 @@
+$text-color: #7c0808
+.navigationLinksContainer
+  width: 100%
+  display: flex
+  flex-wrap: wrap
+  padding: 30px 10px
+  gap: 5px
+  align-items: center
+
+.navigationLink
+  flex: 1 1 40%
+  font-size: 40px
+  font-weight: bold
+  color: #ffffff
+  user-select: none
+  height: fit-content
+  cursor: pointer
+  transform-style: preserve-3d
+  text-shadow: 0 0 10px #7c0808
+  transition: .3s ease-in-out
+
+  &.--left
+    transform: perspective(800px) rotateX(20deg) rotateY(15deg)
+
+  &.--right
+    transform: rotateX(-20deg) rotateY(-335deg) rotateZ(-5deg)
+
+  &:hover
+    text-shadow: 0 0 1px #7c0808, 0 -2px 5px #7c0808, 0 -4px 7px #7c0808
+
+@keyframes fire
+  0%
+    text-shadow: 0px -2px 4px #fff, 0px -3px 5px #FF3, 0px -7px 7px #F90, 0px -10px 10px #C33
+
+  50%
+    text-shadow: 2px -4px 8px #fff, 2px -6px 10px #FF3, 2px -15px 14px #F90, 2px -20px 20px #C33
+
+  100%
+    text-shadow: 0px -2px 4px #fff, 0px -3px 5px #FF3, 0px -7px 7px #F90, 0px -10px 10px #C33
