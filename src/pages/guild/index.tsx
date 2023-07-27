@@ -1,15 +1,26 @@
 import React from 'react';
-import { useRouter } from 'next/router';
+import { observer } from 'mobx-react-lite';
 
-export default function Guild() {
-  const router = useRouter();
+import { useStore } from '@/store';
+
+import GuildBackground from '@/_modules/Guild/sections/guildBackground';
+import CardHand from '@/_modules/Guild/sections/cardHand';
+
+import styles from './styles.module.sass';
+
+const Guild = observer(() => {
+  const store = useStore();
+
+  const { activePlayerId } = store.guildStore;
 
   return (
-    <div style={{ display: 'flex', gap: '3px' }}>
-      ТУТ ПОКА НЕГУСТО, НО МЫ В ПРОЦЕССЕ
-      <button onClick={router.back}>
-        BACK
-      </button>
+    <div className={styles.guildPage}>
+      <GuildBackground unfocused={!!activePlayerId}/>
+      <div className={styles.handContainer}>
+        <CardHand />
+      </div>
     </div>
   );
-}
+});
+
+export default Guild;

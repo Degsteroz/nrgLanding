@@ -1,0 +1,56 @@
+.playerCardContainer
+  width: 200px
+  perspective: 300px
+
+.playerCard
+  width: 200px
+  height: 300px
+  border-radius: 6px
+  display: flex
+  flex-direction: column
+  background-color: #faf5ea
+  color: #080025
+  border: #080025 1px solid
+  transition: all 0.5s ease-in-out
+  transform-style: preserve-3d
+  margin-bottom: -120px
+  transform: rotateX(15deg)
+  animation: hide 2s linear, shows 0.9s 2s  ease-in-out
+
+  &:hover:not(.--opened):not(.--blurred)
+    margin-bottom: -100px
+    z-index: 10
+
+  &.--opened
+    margin-bottom: -300px
+  &.--blurred
+    filter: blur(3px)
+
+@keyframes hide
+  from
+    margin-bottom: -300px
+  to
+    margin-bottom: -300px
+
+@keyframes shows
+  from
+    margin-bottom: -300px
+  to
+    margin-bottom: -120px
+
+
+
+.fullCard
+  position: fixed
+  top: 100vh
+  left: 50%
+  transform: translate(-50%, 0)
+  width: calc(200px * 1.5)
+  height: calc(300px * 1.5)
+  background-color: rgba(201, 18, 18, 0.8)
+  z-index: 4
+  transition: all 0.3s ease-in-out
+
+  &.--visible
+    top: 50vh
+    transform: translate(-50%, -50%)

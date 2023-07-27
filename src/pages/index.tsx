@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styles from './page.module.sass';
 import { useRouter } from 'next/router';
 
-import Background from '../_modules/Main/_sections/background';
-import Navigation from '../_modules/Main/_sections/navigation';
+import Background from '../_modules/Main/sections/background';
+import Navigation from '../_modules/Main/sections/navigation';
 
 const MAIN = 'MAIN';
 const MAP = 'MAP';

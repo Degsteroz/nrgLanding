@@ -5,7 +5,7 @@ const CONFIG = {
   scale1000: 'c_scale,w_1000/',
   lowQuality: 'q_50/',
   blur: 'e_blur:2000/',
-  pixelate: 'e_pixelate:8/'
+  pixelate: 'e_pixelate:10/'
 };
 const DIRECTORY = 'rolevoshnaya/';
 
@@ -16,6 +16,11 @@ const HANDS_WITH_MAP = BASE_URL + DIRECTORY + 'hands';
 
 const CASTLE = BASE_URL + DIRECTORY + 'castleBackground';
 const MOUNTAINS = BASE_URL + DIRECTORY + 'mountainsBackground';
+const LIBRARY = BASE_URL + DIRECTORY + 'guildBackground__library';
+const STRANGER = BASE_URL + DIRECTORY + 'lovecraft';
+const GHOST = BASE_URL + DIRECTORY + 'ghost_jgvsar';
+
+const PORTRAIT = BASE_URL + CONFIG.scale300 + CONFIG.lowQuality + DIRECTORY;
 
 export {
   LOGO_IMAGE,
@@ -23,5 +28,9 @@ export {
   FOREST,
   HANDS_WITH_MAP,
   CASTLE,
-  MOUNTAINS
+  MOUNTAINS,
+  LIBRARY,
+  STRANGER,
+  PORTRAIT,
+  GHOST,
 };
