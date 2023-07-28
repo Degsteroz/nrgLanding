@@ -8,7 +8,8 @@ const players: IPlayers = [
     id: 'id0',
     photo: PORTRAIT + 'Roksana_ylc7b3',
     name: 'Оксана Фоменко',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac.'
+    description: 'Моя прекрасная несравненная <a href="https://twitter.com/Zloi_Aiko" target="_blank">жена</a>, ' +
+      'чья красота затмевает звёзды и луну.'
   },
   {
     id: 'id1',

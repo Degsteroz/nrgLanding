@@ -8,11 +8,11 @@ import styles from './styles.module.sass';
 
 const CardHand = () => {
 
-  const elements = players.map((player: IPlayer, index) => {
+  const elements = players.map((player: IPlayer) => {
     const { id } = player;
     return (
       <PlayerCard
-        key={id + index}
+        key={id}
         playerId={id}
       />
     );

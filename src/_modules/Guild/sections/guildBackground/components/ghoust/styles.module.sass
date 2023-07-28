@@ -1,0 +1,25 @@
+.ghost
+  transition: all 2s linear
+  position: absolute
+  top: 0
+  width: 600px
+  filter: blur(10px)
+  opacity: 0.8
+  animation: fly 3s ease-in-out infinite
+
+  &.--hidden
+    filter: blur(20px)
+    opacity: 0
+
+.ghostImage
+  width: 100%
+  height: 100%
+
+
+@keyframes fly
+  0%
+    top: 0
+  50%
+    top: 10px
+  100%
+    top: 0

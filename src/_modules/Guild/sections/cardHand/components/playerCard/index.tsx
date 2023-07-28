@@ -1,23 +1,17 @@
-import React, { CSSProperties, useEffect, useState } from 'react';
+import React from 'react';
+import Image from 'next/image';
 
 import styles from './styles.module.sass';
 import config from '../../config';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '@/store';
-import Image from 'next/image';
+import PlayerInfoBlock from '@/_modules/Guild/sections/cardHand/components/playerInfoBlock';
 
 const PlayerCard = observer((
-  {
-    playerId,
-    style,
-  }: {
-    playerId: string
-    style?: CSSProperties
-  }
+  { playerId }: { playerId: string },
 ) => {
   const { guildStore } = useStore();
   const { activePlayerId } = guildStore;
-  const [isFullVisible, setFullVisible] = useState(false);
   const player = config.find(item => item.id === playerId);
 
   const isActive = playerId === activePlayerId;
@@ -27,29 +21,13 @@ const PlayerCard = observer((
     guildStore.setActivePlayerId(activePlayerId === playerId ? null : playerId);
   };
 
-  useEffect(() => {
-    if(!isActive) return;
-    const timer = setTimeout(() => {
-      setFullVisible(isActive);
-    }, 700);
-
-    return () => clearTimeout(timer);
-  }, [isActive]);
-
-  const handleClickOnFullCard = () => {
-    setFullVisible(false);
-
-    setTimeout(() => {
-      handleClick();
-    }, 500);
-  };
-
   if (!player) return null;
   const playerCardClassName = `${styles.playerCard} ` +
+    `${styles['--preview']} ` +
     `${isActive && styles['--opened']} ` +
     `${!!activePlayerId && styles['--blurred']}`;
-  const cardContainerClassName = `${styles.playerCardContainer} ${isActive && styles['--opened']}`;
-  const fullCardClassName = `${styles.fullCard} ${isFullVisible && styles['--visible']}`;
+  const cardContainerClassName = `${styles.playerCardContainer} ` +
+    `${isActive && styles['--opened']}`;
 
   return (
     <>
@@ -63,15 +41,14 @@ const PlayerCard = observer((
           width={200}
           height={400}
           className={playerCardClassName}
-          style={style || {}}
         />
       </div>
-      <div
-        className={fullCardClassName}
-        onClick={handleClickOnFullCard}
-      >
-        {player.description}
-      </div>
+
+      <PlayerInfoBlock
+        player={player}
+        handleClick={handleClick}
+        active={isActive}
+      />
     </>
   );
 });

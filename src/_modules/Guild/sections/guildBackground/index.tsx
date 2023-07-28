@@ -3,7 +3,7 @@ import styles from './styles/index.module.sass';
 
 import config from '@/_modules/Guild/config';
 import Image from 'next/image';
-import Ghost from '@/_modules/Guild/sections/guildBackground/components/ghost';
+import Ghost from '@/_modules/Guild/sections/guildBackground/components/ghoust';
 
 export default function GuildBackground({
   unfocused
