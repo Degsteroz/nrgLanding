@@ -12,7 +12,7 @@ export default function Ghost() {
   const [isVisible, setVisible] = useState(true);
   const getGhostRandomPosition = () => {
     let position = 500;
-    while (position >= 45 && position <= 750) {
+    while (position >= 45 && position <= 790) {
       position = Math.floor(Math.random() * (window.innerWidth - 600));
     }
     return position + 'px';
