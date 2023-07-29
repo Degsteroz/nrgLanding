@@ -11,9 +11,9 @@ import styles from './styles.module.sass';
 export default function Ghost() {
   const [isVisible, setVisible] = useState(true);
   const getGhostRandomPosition = () => {
-    let position = (Math.random() * ((window.innerWidth - 600) - 1)) + 1;
+    let position = 500;
     while (position >= 45 && position <= 750) {
-      position = (Math.random() * ((window.innerWidth - 600) - 1)) + 1;
+      position = Math.floor(Math.random() * (window.innerWidth - 600));
     }
     return position + 'px';
   };
