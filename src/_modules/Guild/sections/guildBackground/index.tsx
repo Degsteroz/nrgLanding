@@ -1,16 +1,17 @@
 import React from 'react';
+import { observer } from 'mobx-react-lite';
+import { useStore } from '@/store';
 import styles from './styles/index.module.sass';
 
 import config from '@/_modules/Guild/config';
 import Image from 'next/image';
 import Ghost from '@/_modules/Guild/sections/guildBackground/components/ghoust';
 
-export default function GuildBackground({
-  unfocused
-} : {
-  unfocused: boolean
-}) {
-  const backClassName = `${styles.guildBackgroundContainer} ${unfocused && styles['--unfocused']}`;
+const GuildBackground = observer(() => {
+  const { guildStore } = useStore();
+
+  const { activePlayerId } = guildStore;
+  const backClassName = `${styles.guildBackgroundContainer} ${!!activePlayerId && styles['--unfocused']}`;
   return (
     <div className={backClassName}>
       <Image
@@ -32,4 +33,6 @@ export default function GuildBackground({
       </div>
     </div>
   );
-}
+});
+
+export default GuildBackground;

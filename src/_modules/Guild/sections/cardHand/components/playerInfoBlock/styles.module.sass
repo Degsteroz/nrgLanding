@@ -21,6 +21,24 @@
   padding: 90px 40px 40px
   color: #262626
   font-family: 'Pangolin', cursive
+  animation: appear 1s ease-in-out
+
+  &.--hide
+    animation: disappear 1s ease-in-out
+
+@keyframes disappear
+  from
+    filter: blur(0)
+
+  to
+    filter: blur(30px)
+
+@keyframes appear
+  from
+    filter: blur(30px)
+  to
+    filter: blur(0)
+
 
 .content__leftBlock
   display: flex

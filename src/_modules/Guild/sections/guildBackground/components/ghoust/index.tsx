@@ -10,6 +10,8 @@ import styles from './styles.module.sass';
 
 export default function Ghost() {
   const [isVisible, setVisible] = useState(true);
+  const imageWrapper = useRef<HTMLDivElement | null>(null);
+
   const getGhostRandomPosition = () => {
     let position = 500;
     while (position >= 45 && position <= 790) {
@@ -18,10 +20,14 @@ export default function Ghost() {
     return position + 'px';
   };
 
-  useEffect(() => {
+  const setRandomPositionToGhost = () => {
     if (imageWrapper.current && typeof window !== undefined) {
       imageWrapper.current.style.right = getGhostRandomPosition();
     }
+  };
+
+  useEffect(() => {
+    setRandomPositionToGhost();
   }, []);
 
   useEffect(() => {
@@ -32,17 +38,13 @@ export default function Ghost() {
         setVisible(hasToShow);
         clearInterval(interval);
       }
-    }, 5000);
+    }, 3000);
   }, [isVisible]);
-
-  const imageWrapper = useRef<HTMLDivElement | null>(null);
 
   const handleClick = () => {
     setVisible(false);
     setTimeout(() => {
-      if (imageWrapper.current && typeof window !== undefined) {
-        imageWrapper.current.style.right = getGhostRandomPosition();
-      }
+      setRandomPositionToGhost();
     }, 2000);
 
   };
