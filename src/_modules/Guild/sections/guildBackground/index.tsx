@@ -1,11 +1,13 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
-import { useStore } from '@/store';
-import styles from './styles/index.module.sass';
-
-import config from '@/_modules/Guild/config';
 import Image from 'next/image';
-import Ghost from '@/_modules/Guild/sections/guildBackground/components/ghoust';
+
+import { useStore } from '@/store';
+
+import Ghost from './components/ghoust';
+
+import config from './config';
+import styles from './styles/index.module.sass';
 
 const GuildBackground = observer(() => {
   const { guildStore } = useStore();

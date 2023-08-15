@@ -1,37 +1,44 @@
 import React, {
+  useCallback,
   useEffect,
   useRef,
   useState,
 } from 'react';
 import Image from 'next/image';
+import { observer } from 'mobx-react-lite';
+import { useStore } from '@/store';
 
-import config from '../../../../config';
+import config from '../../config';
+
 import styles from './styles.module.sass';
 
-export default function Ghost() {
-  const [isVisible, setVisible] = useState(true);
-  const imageWrapper = useRef<HTMLDivElement | null>(null);
+const Ghost = observer(() => {
 
-  const getGhostRandomPosition = () => {
+  const imageWrapper = useRef<HTMLDivElement | null>(null);
+  const { guildStore } = useStore();
+  const { incrementGhostCount, ghostHidden } = guildStore;
+  const [isVisible, setVisible] = useState(!ghostHidden);
+
+  const getGhostRandomPosition = useCallback(() => {
     let position = 500;
     while (position >= 45 && position <= 790) {
       position = Math.floor(Math.random() * (window.innerWidth - 600));
     }
     return position + 'px';
-  };
+  }, []);
 
-  const setRandomPositionToGhost = () => {
+  const setRandomPositionToGhost = useCallback(() => {
     if (imageWrapper.current && typeof window !== undefined) {
       imageWrapper.current.style.right = getGhostRandomPosition();
     }
-  };
+  }, [getGhostRandomPosition]);
 
   useEffect(() => {
     setRandomPositionToGhost();
-  }, []);
+  }, [setRandomPositionToGhost]);
 
   useEffect(() => {
-    if (isVisible) return;
+    if (isVisible || ghostHidden) return;
     const interval = setInterval(() => {
       const hasToShow = Math.random() > 0.6;
       if (hasToShow) {
@@ -39,15 +46,17 @@ export default function Ghost() {
         clearInterval(interval);
       }
     }, 3000);
-  }, [isVisible]);
+  }, [isVisible, ghostHidden]);
 
   const handleClick = () => {
+    incrementGhostCount();
     setVisible(false);
     setTimeout(() => {
       setRandomPositionToGhost();
     }, 2000);
 
   };
+  if (ghostHidden) return null;
   const ghostClassName = `${styles.ghost} ${!isVisible ? styles['--hidden'] : ''}`;
 
   return (
@@ -65,4 +74,6 @@ export default function Ghost() {
       />
     </div>
   );
-}
+});
+
+export default Ghost;

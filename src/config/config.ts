@@ -34,3 +34,13 @@ export {
   PORTRAIT,
   GHOST,
 };
+
+export const achievements = [
+  {
+    id: '0001',
+    title: 'GhostBuster!',
+    description: 'Who you gonna call?',
+    image: '',
+    reached: false,
+  }
+];

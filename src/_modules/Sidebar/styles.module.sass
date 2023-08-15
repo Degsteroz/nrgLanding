@@ -1,0 +1,50 @@
+$componentWidth: calc(400px - 20px)
+
+.sidebarComponent
+  position: fixed
+  display: flex
+  gap: 10px
+  top: 0
+  right: 0
+  z-index: 20
+
+.sidebar__contentWrapper
+  top: 70px
+  right: -550px
+  position: absolute
+  z-index: 20
+  transition: all 0.3s ease-in-out
+
+  &.--active
+    right: 0
+
+.sidebarContent
+  position: relative
+  border-radius: 6px 0 0 6px
+  height: calc(550px - 20px)
+  width: $componentWidth
+  background-color: #2a2929
+  padding: 10px 0 10px 20px
+
+.innerContent
+  background: linear-gradient(90deg, #F3E3C9FF 0%, #F3E3C9FF 90%, #868686FF 100%)
+  border-radius: 14px 0 0 14px
+  width: calc(100% - 40px)
+  height: calc(100% - 40px)
+  padding: 20px
+  position: relative
+  color: #2a2929
+
+.bookmarks
+  display: flex
+  flex-direction: column
+  position: absolute
+  top: 50px
+  gap: 2px
+  left: -50px
+
+.sidebar__button
+  margin: 10px 10px 0 0
+  filter: invert(1)
+  &.--active
+    filter: invert(1) drop-shadow(0 0 4px #faf8f8)
