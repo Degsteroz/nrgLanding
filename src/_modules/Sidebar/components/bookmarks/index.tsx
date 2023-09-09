@@ -7,7 +7,7 @@ import path from '@/assets/path.svg';
 import styles from './styles.module.sass';
 
 interface IBookmarks {
-  setCurrentBookmark: (bookmark: string) => void
+  setCurrentBookmark: (_bookmark: string) => void
   currentBookmark: string
 }
 export default function Bookmarks({
