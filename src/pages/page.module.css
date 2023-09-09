@@ -1,5 +1,6 @@
 .main {
   color: black;
+  user-select: none;
 }
 
 /*# sourceMappingURL=page.module.css.map */

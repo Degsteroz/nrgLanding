@@ -6,6 +6,7 @@ import React, {
 } from 'react';
 import Image from 'next/image';
 import { observer } from 'mobx-react-lite';
+
 import { useStore } from '@/store';
 
 import config from '../../config';
@@ -16,7 +17,7 @@ const Ghost = observer(() => {
 
   const imageWrapper = useRef<HTMLDivElement | null>(null);
   const { guildStore } = useStore();
-  const { incrementGhostCount, ghostHidden } = guildStore;
+  const { incrementGhostCount, ghostHidden, ghostCount, setMysterySolved } = guildStore;
   const [isVisible, setVisible] = useState(!ghostHidden);
 
   const getGhostRandomPosition = useCallback(() => {
@@ -49,13 +50,19 @@ const Ghost = observer(() => {
   }, [isVisible, ghostHidden]);
 
   const handleClick = () => {
+    if (!isVisible) return;
     incrementGhostCount();
     setVisible(false);
     setTimeout(() => {
       setRandomPositionToGhost();
     }, 2000);
-
   };
+
+  useEffect(() => {
+    if (ghostCount < 1) return;
+    setMysterySolved();
+  }, [ghostCount, setMysterySolved]);
+
   if (ghostHidden) return null;
   const ghostClassName = `${styles.ghost} ${!isVisible ? styles['--hidden'] : ''}`;
 

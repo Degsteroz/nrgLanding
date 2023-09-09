@@ -30,8 +30,12 @@ const Sidebar = observer(() => {
     }`
   );
 
-  const contentWrapperClassName = getActiveClassName(styles.sidebar__contentWrapper);
-  const sidebarBookSwitcherClassName = getActiveClassName(styles.sidebar__button);
+  const contentWrapperClassName = getActiveClassName(
+    styles.sidebar__contentWrapper,
+  );
+  const sidebarBookSwitcherClassName = getActiveClassName(
+    styles.sidebar__button,
+  );
 
   const handleClickOnSwitcher = (e: MouseEvent<HTMLElement>) => {
     e.stopPropagation();

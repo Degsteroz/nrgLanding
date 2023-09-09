@@ -2,4 +2,9 @@ body {
   margin: 0;
   background-color: #080025;
   color: white;
+  user-select: none
+}
+
+img {
+  -webkit-user-drag: none;
 }

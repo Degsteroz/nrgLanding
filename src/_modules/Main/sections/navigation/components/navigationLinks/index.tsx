@@ -1,16 +1,20 @@
 import React from 'react';
+import { observer } from 'mobx-react-lite';
 
 import config from './config';
 import styles from './styles.module.sass';
 
-export default function NavigationLinks () {
-  const linksArray = config.links.map((link, index) => {
-    const linkClassname = `${styles.navigationLink} ` +
-      `${index % 2 === 0 ? styles['--left'] :styles['--right'] }`;
+interface INavigationLinks {
+  handleLinkClick: (_url: string) => void
+}
+
+const NavigationLinks = observer(({ handleLinkClick }: INavigationLinks) => {
+  const linksArray = config.links.map((link) => {
     return (
       <div
-        key={link.value + '_' + index}
-        className={linkClassname}
+        key={link.id}
+        className={styles.navigationLink}
+        onClick={() => handleLinkClick(link.url)}
       >
         {link.title}
       </div>
@@ -18,8 +22,10 @@ export default function NavigationLinks () {
   });
 
   return (
-    <div className={styles.navigationLinksContainer}>
+    <div className={styles.linksContainer}>
       {linksArray}
     </div>
   );
-}
+});
+
+export default NavigationLinks;

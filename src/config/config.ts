@@ -12,7 +12,7 @@ const DIRECTORY = 'rolevoshnaya/';
 const LOGO_IMAGE = BASE_URL + CONFIG.pixelate + DIRECTORY + 'logokanala';
 const MANSION = BASE_URL + DIRECTORY + 'Main_mansion';
 const FOREST = BASE_URL + DIRECTORY + 'Main_forest';
-const HANDS_WITH_MAP = BASE_URL + DIRECTORY + 'hands';
+const HANDS_WITH_MAP = BASE_URL + DIRECTORY + 'book_tio7zx.png';
 
 const CASTLE = BASE_URL + DIRECTORY + 'castleBackground';
 const MOUNTAINS = BASE_URL + DIRECTORY + 'mountainsBackground';
@@ -35,12 +35,21 @@ export {
   GHOST,
 };
 
+const getAchievementLink = (id: string): string => BASE_URL + DIRECTORY + id;
+
 export const achievements = [
   {
     id: '0001',
     title: 'GhostBuster!',
     description: 'Who you gonna call?',
-    image: '',
+    image: getAchievementLink('ghostBusterAchievment_ntisc3'),
+    reached: false,
+  },
+  {
+    id: '0002',
+    title: 'Загадочный текст',
+    description: 'Король ужасов найден!',
+    image: getAchievementLink('mysteryTextAchievement_polmrr'),
     reached: false,
   }
 ];

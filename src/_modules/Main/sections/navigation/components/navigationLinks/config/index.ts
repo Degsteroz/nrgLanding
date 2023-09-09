@@ -2,19 +2,23 @@ const config = {
   links: [
     {
       title: 'Гильдия',
-      value: '/guild'
+      url: '/guild',
+      id: '1'
     },
     {
       title: 'Гильдия',
-      value: '/guild'
+      url: '/guild',
+      id: '2'
     },
     {
       title: 'Гильдия',
-      value: '/guild'
+      url: '/guild',
+      id: '3'
     },
     {
       title: 'Гильдия',
-      value: '/guild'
+      url: '/guild',
+      id: '4',
     },
   ]
 };

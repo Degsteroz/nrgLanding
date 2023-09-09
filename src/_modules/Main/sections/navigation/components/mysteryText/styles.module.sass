@@ -1,0 +1,55 @@
+.mysteryComponent
+  display: flex
+  width: calc(100% - 80px)
+  padding: 0 40px
+  justify-content: space-between
+  position: absolute
+  top: 10%
+  transition: all 1s ease-in-out
+  animation: appearComponent 0.3s ease-in-out
+  &.--hidden
+    opacity: 0
+    filter: blur(30px)
+    .wordsWrapper__word
+      cursor: initial
+
+@keyframes appearComponent
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+.wordsWrapper
+  display: flex
+  flex: 1 1 35%
+  gap: 3px
+  width: 200px
+  flex-wrap: wrap
+  justify-content: flex-start
+
+.wordsWrapper__word
+  color: #444444
+  font-size: 14px
+
+  transition: opacity 1s ease-in-out, color 0.3s ease-in-out, filter 0.3s ease-in-out
+  cursor: pointer
+
+  &.--active
+    color: #7a1212
+    filter: drop-shadow(0 0 2px #000000)
+
+  &.--hidden
+    cursor: initial
+    &:not(.--active)
+      opacity: 0.2
+
+.mysteryImage
+  width: 230px
+  height: 200px
+  flex: 1 1 35%
+  opacity: 0
+
+  &.--visible
+    transition: all 3s ease-in-out
+    opacity: 1
+

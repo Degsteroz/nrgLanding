@@ -16,10 +16,15 @@ const GuildStore = types
     },
     incrementGhostCount() {
       self.ghostCount += 1;
-      if (self.ghostCount !== 2) return;
-      self.ghostHidden = true;
+    },
+    setMysterySolved() {
       const store = getParent(self) as IStore;
-      store.sidebarStore.setAchievementReached('001');
+      store.sidebarStore.setAchievementReached('0001');
+      localStorage.setItem('ghostBuster', 'true');
+
+      setTimeout(() => {
+        self.ghostHidden = true;
+      }, 2000);
     }
   }));
 

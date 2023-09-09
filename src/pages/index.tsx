@@ -1,43 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { observer } from 'mobx-react-lite';
+
 import styles from './page.module.sass';
-import { useRouter } from 'next/router';
 
 import Background from '../_modules/Main/sections/background';
 import Navigation from '../_modules/Main/sections/navigation';
+import { useStore } from '@/store';
 
 const MAIN = 'MAIN';
 const MAP = 'MAP';
 
-type ViewType = 'MAIN' | 'MAP'
+const Home = observer(() => {
+  const {
+    mainPageStore: {
+      currentState,
+      pageVisible,
+    },
+  } = useStore();
 
-export default function Home() {
-  const [view, setView] = useState<ViewType>(MAIN);
-  const [hidden, setHidden] = useState<Boolean>(false);
-
-  const router = useRouter();
-
-  const changeView = () => {
-    setView(prev => prev === MAP ? MAIN : MAP);
-  };
-  const changePage = () => {
-    setHidden(true);
-    setTimeout(() => {
-      router.push('/guild').then(() => {});
-    }, 3500);
-  };
-
-  const mainClassName = `${styles.main} ${hidden ? styles['--hidden'] : ''}`;
+  const mainClassName = `${styles.main} ${!pageVisible ? styles['--hidden'] : ''}`;
 
   return (
     <main className={mainClassName}>
-      <Background
-        unfocused={view !== MAIN}
-      />
-      <Navigation
-        unfocused={view !== MAP}
-        handleChangeView={changeView}
-        handleChangePage={changePage}
-      />
+      <Background unfocused={currentState !== MAIN} />
+
+      <Navigation unfocused={currentState !== MAP} />
     </main>
   );
-}
+});
+
+export default Home;

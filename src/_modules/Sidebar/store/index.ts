@@ -1,6 +1,4 @@
-import {
-  types,
-} from 'mobx-state-tree';
+import { types } from 'mobx-state-tree';
 
 const Achievement = types
   .model('Sidebar', {
@@ -33,9 +31,9 @@ const SidebarStore = types
       self.isOpen = value;
     }
   }))
-  .views((self) => ({
-    isActive() {
-      return self.achievements.some(element => element.reached);
+  .views(self => ({
+    reachedAchievements() {
+      return self.achievements.filter(item => item.reached);
     }
   }));
 
