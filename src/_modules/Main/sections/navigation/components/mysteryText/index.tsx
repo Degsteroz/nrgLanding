@@ -90,8 +90,12 @@ const MysteryText = observer(() => {
     });
   };
 
-  const componentClassName = `${styles.mysteryComponent} ${unfocused ? styles['--hidden'] : ''}`;
-  const imageClassName = `${styles.mysteryImage} ${mysteryReached ? styles['--visible'] : ''}`;
+  const componentClassName = `${styles.mysteryComponent} ${
+    unfocused ? styles['--hidden'] : ''
+  }`;
+  const imageClassName = `${styles.mysteryImage} ${
+    mysteryReached ? styles['--visible'] : ''
+  }`;
 
   return (
     <div className={componentClassName}>
