@@ -17,7 +17,9 @@ const Achievement = types
 const SidebarStore = types
   .model('SidebarStore', {
     isOpen: false,
-    achievements: types.array(Achievement)
+    withInteraction: false,
+    achievements: types.array(Achievement),
+    visitedRoutes: types.array(types.string)
   })
   .actions((self) => ({
     setAchievementReached(id: string) {
@@ -29,6 +31,17 @@ const SidebarStore = types
     },
     setOpenState(value: boolean) {
       self.isOpen = value;
+    },
+    switchInteraction() {
+      if (!self.withInteraction) self.withInteraction = true;
+    },
+    addVisitedRoutes(route: string) {
+      setTimeout(() => {
+        self.isOpen = false;
+      }, 700);
+
+      if (self.visitedRoutes.includes(route)) return;
+      self.visitedRoutes.push(route);
     }
   }))
   .views(self => ({

@@ -19,8 +19,10 @@ const MysteryText = observer(() => {
       currentState,
       mysteryReached,
       setMysterySolved,
-      setNewState
     },
+    sidebarStore: {
+      switchInteraction
+    }
   } = useStore();
 
   useEffect(() => {
@@ -29,7 +31,7 @@ const MysteryText = observer(() => {
       .every(searchWord => words.includes(searchWord));
 
     if (!isReached && words.length === 3) {
-      setTimeout(() =>setWords(
+      setTimeout(() => setWords(
         prev => prev.filter(
           item => secretWords.includes(item),
         ),
@@ -38,7 +40,13 @@ const MysteryText = observer(() => {
     if (!isReached) return;
 
     setMysterySolved();
-  }, [secretWords, setMysterySolved, words, mysteryReached]);
+    switchInteraction();
+  }, [
+    setMysterySolved,
+    words,
+    mysteryReached,
+    switchInteraction
+  ]);
 
   useEffect(() => {
     if (mysteryReached) {
@@ -48,8 +56,6 @@ const MysteryText = observer(() => {
 
   const unfocused = currentState === 'MAIN';
   const handleClickOnWord = (word: string, isActive: boolean) => {
-    if (unfocused) return setNewState('MAP');
-
     setWords(prevState => (
       isActive
         ? prevState.filter(prevWord => prevWord !== word)

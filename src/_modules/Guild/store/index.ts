@@ -16,6 +16,8 @@ const GuildStore = types
     },
     incrementGhostCount() {
       self.ghostCount += 1;
+      const store = getParent(self) as IStore;
+      store.sidebarStore.switchInteraction();
     },
     setMysterySolved() {
       const store = getParent(self) as IStore;

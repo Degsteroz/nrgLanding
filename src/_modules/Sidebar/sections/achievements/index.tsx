@@ -24,11 +24,15 @@ const Achievements = observer(() => {
   }, [achievements, length]);
 
   const componentsArray = achievementsList.map((achievement: IAchievement) => (
-    <Achievement achievement={achievement} key={achievement.id}/>
+    <Achievement
+      achievement={achievement}
+      key={achievement.id}
+    />
   ));
 
   return (
     <div className={styles.achievementsBlock}>
+      <span>ДОСТИЖЕНИЯ</span>
       {componentsArray}
     </div>
   );

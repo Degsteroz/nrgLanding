@@ -51,5 +51,56 @@ export const achievements = [
     description: 'Король ужасов найден!',
     image: getAchievementLink('mysteryTextAchievement_polmrr'),
     reached: false,
+  },
+  {
+    id: '0003',
+    title: 'Загадочный текст',
+    description: 'Король ужасов найден!',
+    image: getAchievementLink('mysteryTextAchievement_polmrr'),
+    reached: false,
+  },
+  {
+    id: '0004',
+    title: 'Загадочный текст',
+    description: 'Король ужасов найден!',
+    image: getAchievementLink('mysteryTextAchievement_polmrr'),
+    reached: false,
+  },
+  {
+    id: '0005',
+    title: 'Загадочный текст',
+    description: 'Король ужасов найден!',
+    image: getAchievementLink('mysteryTextAchievement_polmrr'),
+    reached: false,
+  },
+  {
+    id: '0006',
+    title: 'Загадочный текст',
+    description: 'Король ужасов найден!',
+    image: getAchievementLink('mysteryTextAchievement_polmrr'),
+    reached: false,
   }
+];
+
+export const navLinks = [
+  {
+    title: 'Выход',
+    url: '/',
+    id: '1'
+  },
+  {
+    title: 'Гильдия',
+    url: '/guild',
+    id: '2'
+  },
+  {
+    title: 'О нас',
+    url: '/about',
+    id: '3'
+  },
+  {
+    title: 'Блог',
+    url: '/news',
+    id: '4',
+  },
 ];

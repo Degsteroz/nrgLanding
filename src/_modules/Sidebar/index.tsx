@@ -1,4 +1,8 @@
-import React, { useState, MouseEvent } from 'react';
+import React, {
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import Image from 'next/image';
 import { observer } from 'mobx-react-lite';
 
@@ -20,7 +24,36 @@ const Sidebar = observer(() => {
     setCurrentBookmark,
   ] = useState<string>('achievement');
 
-  const { isOpen, setOpenState } = sidebarStore;
+  const sidebarRef = useRef<HTMLDivElement | null>(null);
+  const initialOpen = useRef<boolean>(false);
+
+  const {
+    isOpen,
+    setOpenState,
+    reachedAchievements,
+    withInteraction,
+  } = sidebarStore;
+
+  useEffect(() => {
+    const clickListener = (e: MouseEvent) => {
+      if (!sidebarRef.current) return;
+      if (!sidebarRef.current?.contains(e.target as Node) && isOpen) {
+        setOpenState(false);
+      }
+    };
+
+    document.addEventListener('click', clickListener);
+
+    return () => document.removeEventListener('click', clickListener);
+  }, [isOpen, setOpenState]);
+
+  const { length: reachedAchCount } = reachedAchievements;
+
+  useEffect(() => {
+    if(isOpen || !withInteraction) return;
+
+    setOpenState(true);
+  }, [reachedAchCount, withInteraction]);
 
   const getActiveClassName = (className: string) => (
     `${className} ${
@@ -37,10 +70,10 @@ const Sidebar = observer(() => {
     styles.sidebar__button,
   );
 
-  const handleClickOnSwitcher = (e: MouseEvent<HTMLElement>) => {
+  const handleClickOnSwitcher = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
     e.preventDefault();
-
+    initialOpen.current = true;
     setOpenState(!isOpen);
   };
 
@@ -53,7 +86,10 @@ const Sidebar = observer(() => {
   const innerContent = getContent();
 
   return (
-    <div className={styles.sidebarComponent}>
+    <div
+      className={styles.sidebarComponent}
+      ref={sidebarRef}
+    >
       <Image
         src={book}
         width={50}
