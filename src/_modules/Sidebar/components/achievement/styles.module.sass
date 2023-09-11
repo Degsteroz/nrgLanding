@@ -12,6 +12,7 @@
   position: relative
   border: none
   width: 100%
+  animation: appear 2s linear 2
 
 
 .topBlock
@@ -38,3 +39,13 @@
 .image
   height: 40px
   width: 40px
+
+$glowColor: #f37d43
+
+@keyframes appear
+  0%
+    filter: drop-shadow(0 0 1px $glowColor)
+  50%
+    filter: drop-shadow(0 0 15px $glowColor)
+  100%
+    filter: drop-shadow(0 0 1px $glowColor)

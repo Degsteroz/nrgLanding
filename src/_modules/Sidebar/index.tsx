@@ -25,7 +25,6 @@ const Sidebar = observer(() => {
   ] = useState<string>('achievement');
 
   const sidebarRef = useRef<HTMLDivElement | null>(null);
-  const initialOpen = useRef<boolean>(false);
 
   const {
     isOpen,
@@ -47,11 +46,11 @@ const Sidebar = observer(() => {
     return () => document.removeEventListener('click', clickListener);
   }, [isOpen, setOpenState]);
 
-  const { length: reachedAchCount } = reachedAchievements;
+  const { length: reachedAchCount } = reachedAchievements();
 
   useEffect(() => {
     if(isOpen || !withInteraction) return;
-
+    setCurrentBookmark('achievement');
     setOpenState(true);
   }, [reachedAchCount, withInteraction]);
 
@@ -73,7 +72,6 @@ const Sidebar = observer(() => {
   const handleClickOnSwitcher = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
     e.preventDefault();
-    initialOpen.current = true;
     setOpenState(!isOpen);
   };
 
